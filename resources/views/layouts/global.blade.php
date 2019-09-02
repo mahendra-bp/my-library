@@ -5,7 +5,7 @@
     <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <title>Star Admin Premium Bootstrap Admin Dashboard Template</title>
+    <title>My Library @yield('title')</title>
     <!-- plugins:css -->
     <link rel="stylesheet" href="{{asset('assets/vendors/iconfonts/mdi/css/materialdesignicons.min.css')}}">
     <link rel="stylesheet" href="{{asset('assets/vendors/iconfonts/ionicons/css/ionicons.css')}}">
@@ -31,9 +31,9 @@
         <nav class="navbar default-layout col-lg-12 col-12 p-0 fixed-top d-flex flex-row">
             <div class="text-center navbar-brand-wrapper d-flex align-items-top justify-content-center">
                 <a class="navbar-brand brand-logo" href="index.html">
-                    <img src="../assets/images/logo.svg" alt="logo" /> </a>
+                    <img src="{{asset('/assets/images/logo.svg')}}" alt="logo" /> </a>
                 <a class="navbar-brand brand-logo-mini" href="index.html">
-                    <img src="../assets/images/logo-mini.svg" alt="logo" /> </a>
+                    <img src="{{asset('/assets/images/logo-mini.svg')}}" alt="logo" /> </a>
             </div>
             <div class="navbar-menu-wrapper d-flex align-items-center">
 
@@ -130,13 +130,15 @@
                         @if(\Auth::user())
                         <a class="nav-link dropdown-toggle" id="UserDropdown" href="#" data-toggle="dropdown"
                             aria-expanded="false">
-                            <img class="img-xs rounded-circle" src="{{Auth::user()->gambar}}" alt="Profile image">
+                            <img class="img-xs rounded-circle" src="
+                            {{asset('storage/'.Auth::user()->gambar)}}" alt="Profile image">
                         </a>
 
                         <div class="dropdown-menu dropdown-menu-right navbar-dropdown" aria-labelledby="UserDropdown">
 
                             <div class="dropdown-header text-center">
-                                <img class="img-md rounded-circle" src="{{Auth::user()->gambar}}" alt="Profile image">
+                                <img class="img-md rounded-circle" src="{{asset('storage/'.Auth::user()->gambar)}}"
+                                    alt="Profile image">
                                 <p class="mb-1 mt-3 font-weight-semibold"> {{Auth::user()->name}}</p>
                                 <p class="font-weight-light text-muted mb-0"> {{Auth::user()->email}}</p>
                             </div>
@@ -293,6 +295,7 @@
     <!-- Custom js for this page-->
     <script src="{{asset('assets/js/demo_1/dashboard.js')}}"></script>
     <!-- End custom js for this page-->
+    @yield('js')
 </body>
 
 </html>
