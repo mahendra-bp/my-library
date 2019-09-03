@@ -11,11 +11,12 @@
 |
 */
 
-Route::get('/', function () {
-    return view('home');
-});
+
 
 Auth::routes();
+
+
+Route::get('/', 'HomeController@index');
 
 Route::get('/home', 'HomeController@index')->name('home');
 Route::match(["GET", "POST"], "/register", function () {
@@ -23,3 +24,5 @@ Route::match(["GET", "POST"], "/register", function () {
 })->name('register');
 
 Route::resource("users", "UserController");
+Route::resource('members', 'MemberController');
+Route::resource('books', 'BookController');

@@ -13,11 +13,18 @@
     <link rel="stylesheet" href="{{asset('assets/vendors/iconfonts/flag-icon-css/css/flag-icon.min.css')}}">
     <link rel="stylesheet" href="{{asset('assets/vendors/css/vendor.bundle.base.css')}}">
     <link rel="stylesheet" href="{{asset('assets/vendors/css/vendor.bundle.addons.css')}}">
+
     <!-- endinject -->
     <!-- plugin css for this page -->
+
     <!-- End plugin css for this page -->
     <!-- inject:css -->
     <link rel="stylesheet" href="{{asset('assets/css/shared/style.css')}}">
+    {{-- <link rel="stylesheet" href="{{asset('css/style.css')}}"> --}}
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.10/css/select2.min.css" rel="stylesheet" />
+    <link rel="stylesheet" href="{{ asset('css/dataTables.bootstrap4.min.css')}}">
+    @section('css')
     <!-- endinject -->
     <!-- Layout styles -->
     <link rel="stylesheet" href="{{asset('assets/css/demo_1/style.css')}}">

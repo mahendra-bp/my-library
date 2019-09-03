@@ -140,7 +140,7 @@ var check = function() {
                             <button type="reset" class="btn btn-danger">
                                 Reset
                             </button>
-                            <a href="" class="btn btn-light pull-right">Back</a>
+                            <a href="{{route('users.index')}}" class="btn btn-light pull-right">Back</a>
                         </div>
 
                     </div>

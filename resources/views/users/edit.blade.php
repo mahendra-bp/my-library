@@ -73,7 +73,8 @@
                             Current gambar:
                             <br>
                             @if($user->gambar)
-                            <img class="product" src="{{asset('storage/'.$user->gambar)}}" width="200px" />
+                            <img class="product" @if($user->gambar) src="{{asset('storage/'.$user->gambar)}}"
+                            width="200" height="200" @endif/>
                             <br>
                             @else
                             No gambar
@@ -81,22 +82,11 @@
                             <br> <input type="file" class="uploads form-control" style="margin-top: 20px;"
                                 name="gambar">
                             <small class="text-muted">Kosongkan jika tidak ingin mengubah gambar</small>
-                            <hr class="my-3">
+
                         </div>
 
                     </div>
 
-
-                    <div class="form-group{{$errors->has('level') ? ' has-error' : '' }}">
-                        <label for="level" class="col-md-4 control-label">Level</label>
-                        <div class="col-md-6">
-                            <select class="form-control" name="level" required="">
-                                <option value=""></option>
-                                <option value="admin">Admin</option>
-                                <option value="user">User</option>
-                            </select>
-                        </div>
-                    </div>
 
                     @if(Auth::user()->level == 'admin')
                     <div class="form-group{{ $errors->has('level') ? ' has-error' : '' }}">
