@@ -24,13 +24,13 @@
     </form>
 </div> --}}
 
-<div class="col-lg-12">
-    @if (Session::has('message'))
-    <div class="alert alert-{{ Session::get('message_type') }}" id="waktu2" style="margin-top:10px;">
-        {{ Session::get('message') }}</div>
-    @endif
+@if(session('status'))
+<div class="alert alert-success">
+    {{session('status')}}
 </div>
+@endif
 </div>
+
 <div class="row" style="margin-top: 20px;">
     <div class="col-lg-12 grid-margin stretch-card">
         <div class="card">
@@ -38,12 +38,13 @@
                 <h4 class="card-title pull-left">Data Buku</h4>
                 <a href="{{url('format_buku')}}" class="btn btn-xs btn-info pull-right">Format Buku</a>
                 <div class="table-responsive">
-                    <table class="table table-striped" id="table">
+                    <table class="table table-hover" id="table">
                         <thead>
                             <tr>
                                 <th>Judul</th>
                                 <th>ISBN</th>
                                 <th>Pengarang</th>
+                                <th>Penerbit</th>
                                 <th>Tahun</th>
                                 <th>Stok</th>
                                 <th>Rak</th>
@@ -61,13 +62,14 @@
                                     <img src="{{url('images/buku/default.png')}}" alt="image"
                                         style="margin-right: 10px;" />
                                     @endif
-                                    {{-- <a href="{{route('books.show', $book->id)}}">
-                                    {{$book->judul}}
-                                    </a> --}}
+                                    <a href="{{route('books.show', $book->id)}}">
+                                        {{$book->judul}}
+                                    </a>
                                 </td>
                                 <td>{{$book->isbn}}</td>
 
                                 <td>{{$book->pengarang}}</td>
+                                <td>{{$book->penerbit}}</td>
                                 <td>
                                     {{$book->tahun_terbit}}
                                 </td>
@@ -85,9 +87,10 @@
                                         </button>
                                         <div class="dropdown-menu" x-placement="bottom-start"
                                             style="position: absolute; will-change: transform; top: 0px; left: 0px; transform: translate3d(0px, 30px, 0px);">
-                                            {{-- <a class="dropdown-item" href="{{route('buku.edit', $book->id)}}"> Edit
-                                            </a> --}}
-                                            <form action="" class="pull-left" method="post">
+                                            <a class="dropdown-item" href="{{route('books.edit', $book->id)}}"> Edit
+                                            </a>
+                                            <form action="{{route('books.destroy',['id' => $book->id])}}"
+                                                class="pull-left" method="post">
                                                 {{ csrf_field() }}
                                                 {{ method_field('delete') }}
                                                 <button class="dropdown-item"

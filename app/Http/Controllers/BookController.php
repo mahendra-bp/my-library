@@ -43,6 +43,7 @@ class BookController extends Controller
         $book->tahun_terbit = $request->get('tahun_terbit');
         $book->jumlah_buku = $request->get('jumlah_buku');
         $book->deskripsi = $request->get('deskripsi');
+        $book->penerbit = $request->get('penerbit');
         $book->lokasi = $request->get('lokasi');
         $cover = $request->file('cover');
         if ($cover) {
@@ -61,9 +62,10 @@ class BookController extends Controller
      * @param  \App\Book  $book
      * @return \Illuminate\Http\Response
      */
-    public function show(Book $book)
+    public function show($id)
     {
-        //
+        $book = Book::findOrFail($id);
+        return view('books.show', ['book' => $book]);
     }
 
     /**
@@ -72,9 +74,10 @@ class BookController extends Controller
      * @param  \App\Book  $book
      * @return \Illuminate\Http\Response
      */
-    public function edit(Book $book)
+    public function edit($id)
     {
-        //
+        $book = Book::findOrFail($id);
+        return view('books.edit', ['book' => $book]);
     }
 
     /**
@@ -84,9 +87,26 @@ class BookController extends Controller
      * @param  \App\Book  $book
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Book $book)
+    public function update(Request $request, $id)
     {
-        //
+        $book = Book::findOrFail($id);
+        $book->judul = $request->get('judul');
+        $book->isbn = $request->get('isbn');
+        $book->pengarang = $request->get('pengarang');
+        $book->tahun_terbit = $request->get('tahun_terbit');
+        $book->jumlah_buku = $request->get('jumlah_buku');
+        $book->deskripsi = $request->get('deskripsi');
+        $book->penerbit = $request->get('penerbit');
+        $book->lokasi = $request->get('lokasi');
+        $cover = $request->file('cover');
+        if ($cover) {
+            $cover_path = $cover->store('cover', 'public');
+            $book->cover = $cover_path;
+        }
+        $book->save();
+        return redirect()
+            ->route('books.create')
+            ->with('status', 'Book successfully Edited');
     }
 
     /**
@@ -95,8 +115,11 @@ class BookController extends Controller
      * @param  \App\Book  $book
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Book $book)
+    public function destroy($id)
     {
-        //
+        $book = Book::findOrFail($id);
+        $book->delete();
+        return redirect()->route('books.index')->with('status', 'Book
+successfully delete');
     }
 }

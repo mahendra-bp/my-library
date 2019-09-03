@@ -134,7 +134,8 @@
                             <button type="reset" class="btn btn-danger">
                                 Reset
                             </button>
-                            <a href="" class="btn btn-light pull-right">Back</a>
+
+                            <a href="{{route('books.index')}}" class="btn btn-light pull-right">Back</a>
                         </div>
                     </div>
                 </div>
