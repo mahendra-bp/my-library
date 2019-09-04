@@ -59,6 +59,8 @@ class TransactionController extends Controller
      */
     public function store(Request $request)
     {
+
+
         $transaction = Transaction::create([
             'kode_transaksi' => $request->get('kode_transaksi'),
             'tgl_pinjam' => $request->get('tgl_pinjam'),

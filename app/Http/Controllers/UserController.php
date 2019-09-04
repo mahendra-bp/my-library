@@ -35,6 +35,17 @@ class UserController extends Controller
      */
     public function store(Request $request)
     {
+
+        $validation = \Validator::make($request->all(), [
+            "name" => "required|min:2|max:100",
+            "level" => "required|",
+            "username" => "required|unique",
+            "gambar" => "required",
+            "level" => "required",
+            "password" => "required"
+
+        ])->validate();
+
         $new_user = new \App\User;
         $new_user->name = $request->get('name');
         $new_user->username = $request->get('username');
@@ -82,6 +93,16 @@ class UserController extends Controller
      */
     public function update(Request $request, $id)
     {
+
+        $validation = \Validator::make($request->all(), [
+            "name" => "required|min:2|max:100",
+            "level" => "required|",
+            "username" => "required|unique",
+            "gambar" => "required",
+
+        ])->validate();
+
+
         $user = \App\User::findOrFail($id);
         $user->name = $request->get('name');
         $user->level = $request->get('level');

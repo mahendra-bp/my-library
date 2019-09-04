@@ -36,6 +36,18 @@ class BookController extends Controller
      */
     public function store(Request $request)
     {
+        $validation = \Validator::make($request->all(), [
+            "judul" => "required|min:4|max:100",
+            "isbn" => "required|min:5|max:20|",
+            "pengarang" => "required",
+            "tahun_terbit" => "required|digits:4|integer",
+            "jumlah_buku" => "required|int",
+            "deskripsi" => "",
+            "penerbit" => "required",
+            "lokasi" => "required",
+            "cover" => "required"
+        ])->validate();
+
         $book = new Book;
         $book->judul = $request->get('judul');
         $book->isbn = $request->get('isbn');
@@ -89,6 +101,19 @@ class BookController extends Controller
      */
     public function update(Request $request, $id)
     {
+
+        $validation = \Validator::make($request->all(), [
+            "judul" => "required|min:4|max:100",
+            "isbn" => "required|min:5|max:20|",
+            "pengarang" => "required",
+            "tahun_terbit" => "required|digits:4|integer",
+            "jumlah_buku" => "required|int",
+            "deskripsi" => "",
+            "penerbit" => "required",
+            "lokasi" => "required",
+            "cover" => "required"
+        ])->validate();
+
         $book = Book::findOrFail($id);
         $book->judul = $request->get('judul');
         $book->isbn = $request->get('isbn');

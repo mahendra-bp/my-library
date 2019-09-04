@@ -18,25 +18,26 @@
                         <div class="card-body">
                             <h4 class="card-title">Tambah Buku baru</h4>
 
-                            <div class="form-group{{ $errors->has('judul') ? ' has-error' : '' }}">
+                            <div class="form-group{{$errors->has('judul') ? 'has-error' : '' }}">
                                 <label for="judul" class="col-md-4 control-label">Judul</label>
                                 <div class="col-md-6">
                                     <input id="judul" type="text" class="form-control" name="judul"
                                         value="{{ old('judul') }}" required>
                                     @if ($errors->has('judul'))
-                                    <span class="help-block">
+                                    <span class="text-danger">
                                         <strong>{{ $errors->first('judul') }}</strong>
                                     </span>
                                     @endif
                                 </div>
                             </div>
-                            <div class="form-group{{ $errors->has('isbn') ? ' has-error' : '' }}">
+
+                            <div class="form-group{{ $errors->has('isbn') ? 'has-error' : '' }}">
                                 <label for="isbn" class="col-md-4 control-label">ISBN</label>
                                 <div class="col-md-6">
                                     <input id="isbn" type="text" class="form-control" name="isbn"
                                         value="{{ old('isbn') }}" required>
                                     @if ($errors->has('isbn'))
-                                    <span class="help-block">
+                                    <span class="text-danger">
                                         <strong>{{ $errors->first('isbn') }}</strong>
                                     </span>
                                     @endif
