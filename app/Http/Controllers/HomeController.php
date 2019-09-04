@@ -2,6 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\Book;
+use App\Member;
+use App\Transaction;
 use Illuminate\Http\Request;
 
 class HomeController extends Controller
@@ -23,6 +26,9 @@ class HomeController extends Controller
      */
     public function index()
     {
+        $transaction = Transaction::get();
+        $member   = Member::get();
+        $book      = Book::get();
         return view('home');
     }
 }

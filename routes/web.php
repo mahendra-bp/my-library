@@ -26,3 +26,4 @@ Route::match(["GET", "POST"], "/register", function () {
 Route::resource("users", "UserController");
 Route::resource('members', 'MemberController');
 Route::resource('books', 'BookController');
+Route::resource('transactions', 'TransactionController');
