@@ -7,6 +7,12 @@ use App\Member;
 use App\Transaction;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Gate;
+use RealRashid\SweetAlert\Facades\Alert;
+
+
+
+
 
 class TransactionController extends Controller
 {
@@ -23,13 +29,19 @@ class TransactionController extends Controller
 
     public function index()
     {
+        if (Auth::user()->level == 'user') {
+            $transactions = Transaction::where('anggota_id', Auth::user()->member->id)->get();
+        } else {
+            $transactions = Transaction::get();
+        }
+
+
+
         // if (Auth::user()->level == 'user') {
-        //     $transactions = Transaction::where('anggota_id', Auth::user()->member->id)
-        //         ->get();
-        // } else {
-        //     $transactions = Transaction::get();
+        //     return view('errors.403');
         // }
-        $transactions = Transaction::get();
+
+        // $transactions = Transaction::get();
         return view('transactions.index', compact('transactions'));
     }
 
@@ -40,6 +52,15 @@ class TransactionController extends Controller
      */
     public function create()
     {
+        if (Auth::user()->level == 'user') {
+            return view('errors.403');
+        }
+
+        if (Auth::user()->level == 'user') {
+            Alert::info('Oopss..', 'Anda dilarang masuk ke area ini.');
+            return redirect()->to('/');
+        }
+
         $getRow = Transaction::orderBy('id', 'DESC')->get();
 
         $lastId = $getRow->first();
@@ -89,6 +110,15 @@ class TransactionController extends Controller
      */
     public function show($id)
     {
+        if (Auth::user()->level == 'user') {
+            return view('errors.403');
+        }
+
+        if (Auth::user()->level == 'user') {
+            Alert::info('Oopss..', 'Anda dilarang masuk ke area ini.');
+            return redirect()->to('/');
+        }
+
         $transaction = \App\Transaction::findOrFail($id);
         return view('transactions.show', compact('transaction'));
     }
@@ -101,7 +131,9 @@ class TransactionController extends Controller
      */
     public function edit(Transaction $transaction)
     {
-        //
+        if (Auth::user()->level == 'user') {
+            return view('errors.403');
+        }
     }
 
     /**

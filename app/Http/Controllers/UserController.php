@@ -2,17 +2,36 @@
 
 namespace App\Http\Controllers;
 
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Gate;
+
+
+
 use Illuminate\Http\Request;
 
 class UserController extends Controller
 {
+
+    public function __construct()
+    {
+        // OTORISASI GATE
+        $this->middleware(function ($request, $next) {
+            if (Gate::allows('manage-users')) return $next($request);
+            abort(403, 'Anda tidak memiliki cukup hak akses');
+        });
+    }
     /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
      */
+
     public function index()
     {
+        if (Auth::user()->level == 'user') {
+            return view('errors.403');
+        }
+
         $users = \App\User::paginate(10);
         return view('users.index', ['users' => $users]);
     }
@@ -24,6 +43,9 @@ class UserController extends Controller
      */
     public function create()
     {
+        if (Auth::user()->level == 'user') {
+            return view('errors.403');
+        }
         return view('users.create');
     }
 
@@ -39,7 +61,7 @@ class UserController extends Controller
         $validation = \Validator::make($request->all(), [
             "name" => "required|min:2|max:100",
             "level" => "required|",
-            "username" => "required|unique",
+            "username" => "required",
             "gambar" => "required",
             "level" => "required",
             "password" => "required"
@@ -68,6 +90,10 @@ class UserController extends Controller
      */
     public function show($id)
     {
+        if (Auth::user()->level == 'user') {
+            return view('errors.403');
+        }
+
         $user = \App\User::findOrFail($id);
         return view('users.show', ['user' => $user]);
     }
@@ -80,6 +106,10 @@ class UserController extends Controller
      */
     public function edit($id)
     {
+        if (Auth::user()->level == 'user') {
+            return view('errors.403');
+        }
+
         $user = \App\User::findOrFail($id);
         return view('users.edit', ['user' => $user]);
     }

@@ -4,9 +4,27 @@ namespace App\Http\Controllers;
 
 use App\Book;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Gate;
+use RealRashid\SweetAlert\Facades\Alert;
+
+
+
+
+
+
 
 class BookController extends Controller
 {
+
+    public function __construct()
+    {
+        // OTORISASI GATE
+        $this->middleware(function ($request, $next) {
+            if (Gate::allows('manage-books')) return $next($request);
+            abort(403, 'Anda tidak memiliki cukup hak akses');
+        });
+    }
     /**
      * Display a listing of the resource.
      *
@@ -14,6 +32,10 @@ class BookController extends Controller
      */
     public function index()
     {
+        if (Auth::user()->level == 'user') {
+            return view('errors.403');
+        }
+
         $books = Book::paginate(10);
         return view('books.index', ['books' => $books]);
     }
@@ -25,6 +47,9 @@ class BookController extends Controller
      */
     public function create()
     {
+        if (Auth::user()->level == 'user') {
+            return view('errors.403');
+        }
         return view('books.create');
     }
 
@@ -76,6 +101,9 @@ class BookController extends Controller
      */
     public function show($id)
     {
+        if (Auth::user()->level == 'user') {
+            return view('errors.403');
+        }
         $book = Book::findOrFail($id);
         return view('books.show', ['book' => $book]);
     }
@@ -88,6 +116,9 @@ class BookController extends Controller
      */
     public function edit($id)
     {
+        if (Auth::user()->level == 'user') {
+            return view('errors.403');
+        }
         $book = Book::findOrFail($id);
         return view('books.edit', ['book' => $book]);
     }
