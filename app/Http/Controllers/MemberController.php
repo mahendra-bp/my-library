@@ -6,6 +6,8 @@ use App\Member;
 use App\User;
 use DB;
 use Illuminate\Http\Request;
+use RealRashid\SweetAlert\Facades\Alert;
+use Illuminate\Support\Facades\Auth;
 
 class MemberController extends Controller
 {
@@ -16,6 +18,11 @@ class MemberController extends Controller
      */
     public function index()
     {
+        if (Auth::user()->level == 'user') {
+            Alert::info('Oopss..', 'Anda dilarang masuk ke area ini.');
+            return redirect()->to('/');
+        }
+
         $members = \App\Member::paginate(10);
         return view('members.index', ['members' => $members]);
     }
@@ -27,6 +34,11 @@ class MemberController extends Controller
      */
     public function create()
     {
+        if (Auth::user()->level == 'user') {
+            Alert::info('Oopss..', 'Anda dilarang masuk ke area ini.');
+            return redirect()->to('/');
+        }
+
         $users = User::WhereNotExists(function ($query) {
             $query->select(DB::raw(1))
                 ->from('members')
@@ -58,6 +70,11 @@ class MemberController extends Controller
      */
     public function show($id)
     {
+        if (Auth::user()->level == 'user') {
+            Alert::info('Oopss..', 'Anda dilarang masuk ke area ini.');
+            return redirect()->to('/');
+        }
+
         $member = Member::findOrFail($id);
         return view('members.show', ['member' => $member]);
     }
@@ -70,6 +87,11 @@ class MemberController extends Controller
      */
     public function edit($id)
     {
+        if (Auth::user()->level == 'user') {
+            Alert::info('Oopss..', 'Anda dilarang masuk ke area ini.');
+            return redirect()->to('/');
+        }
+
         $member = \App\Member::findOrFail($id);
         $users = \App\User::get();
         return view('members.edit', ['member' => $member], ['users' => $users]);

@@ -52,9 +52,7 @@ class TransactionController extends Controller
      */
     public function create()
     {
-        if (Auth::user()->level == 'user') {
-            return view('errors.403');
-        }
+
 
         if (Auth::user()->level == 'user') {
             Alert::info('Oopss..', 'Anda dilarang masuk ke area ini.');
@@ -110,14 +108,7 @@ class TransactionController extends Controller
      */
     public function show($id)
     {
-        if (Auth::user()->level == 'user') {
-            return view('errors.403');
-        }
 
-        if (Auth::user()->level == 'user') {
-            Alert::info('Oopss..', 'Anda dilarang masuk ke area ini.');
-            return redirect()->to('/');
-        }
 
         $transaction = \App\Transaction::findOrFail($id);
         return view('transactions.show', compact('transaction'));
@@ -132,7 +123,8 @@ class TransactionController extends Controller
     public function edit(Transaction $transaction)
     {
         if (Auth::user()->level == 'user') {
-            return view('errors.403');
+            Alert::info('Oopss..', 'Anda dilarang masuk ke area ini.');
+            return redirect()->to('/');
         }
     }
 

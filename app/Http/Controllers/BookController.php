@@ -14,16 +14,18 @@ use RealRashid\SweetAlert\Facades\Alert;
 
 
 
+
+
 class BookController extends Controller
 {
 
     public function __construct()
     {
         // OTORISASI GATE
-        $this->middleware(function ($request, $next) {
-            if (Gate::allows('manage-books')) return $next($request);
-            abort(403, 'Anda tidak memiliki cukup hak akses');
-        });
+        // $this->middleware(function ($request, $next) {
+        //     if (Gate::allows('manage-books')) return $next($request);
+        //     abort(403, 'Anda tidak memiliki cukup hak akses');
+        // });
     }
     /**
      * Display a listing of the resource.
@@ -33,7 +35,8 @@ class BookController extends Controller
     public function index()
     {
         if (Auth::user()->level == 'user') {
-            return view('errors.403');
+            Alert::info('Oopss..', 'Anda dilarang masuk ke area ini.');
+            return redirect()->to('/');
         }
 
         $books = Book::paginate(10);
@@ -48,8 +51,10 @@ class BookController extends Controller
     public function create()
     {
         if (Auth::user()->level == 'user') {
-            return view('errors.403');
+            Alert::info('Oopss..', 'Anda dilarang masuk ke area ini.');
+            return redirect()->to('/');
         }
+
         return view('books.create');
     }
 
@@ -102,7 +107,8 @@ class BookController extends Controller
     public function show($id)
     {
         if (Auth::user()->level == 'user') {
-            return view('errors.403');
+            Alert::info('Oopss..', 'Anda dilarang masuk ke area ini.');
+            return redirect()->to('/');
         }
         $book = Book::findOrFail($id);
         return view('books.show', ['book' => $book]);
@@ -117,8 +123,10 @@ class BookController extends Controller
     public function edit($id)
     {
         if (Auth::user()->level == 'user') {
-            return view('errors.403');
+            Alert::info('Oopss..', 'Anda dilarang masuk ke area ini.');
+            return redirect()->to('/');
         }
+
         $book = Book::findOrFail($id);
         return view('books.edit', ['book' => $book]);
     }

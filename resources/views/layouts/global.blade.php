@@ -13,6 +13,7 @@
     <link rel="stylesheet" href="{{asset('assets/vendors/iconfonts/flag-icon-css/css/flag-icon.min.css')}}">
     <link rel="stylesheet" href="{{asset('assets/vendors/css/vendor.bundle.base.css')}}">
     <link rel="stylesheet" href="{{asset('assets/vendors/css/vendor.bundle.addons.css')}}">
+    {{-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-sweetalert/1.0.1/sweetalert.css"> --}}
 
     <!-- endinject -->
     <!-- plugin css for this page -->
@@ -200,17 +201,29 @@
     <!-- plugins:js -->
     <script src="{{asset('assets/vendors/js/vendor.bundle.base.js')}}"></script>
     <script src="{{asset('assets/vendors/js/vendor.bundle.addons.js')}}"></script>
+
     <!-- endinject -->
     <!-- Plugin js for this page-->
     <!-- End plugin js for this page-->
     <!-- inject:js -->
-    <script src="{{asset('assets/js/shared/off-canvas.js')}}"></script>
-    <script src="{{asset('assets/js/shared/misc.js')}}"></script>
+    {{-- <script src="{{asset('assets/js/shared/off-canvas.js')}}"></script>
+    <script src="{{asset('assets/js/shared/misc.js')}}"></script> --}}
     <!-- endinject -->
     <!-- Custom js for this page-->
     <script src="{{asset('assets/js/demo_1/dashboard.js')}}"></script>
+    {{-- <script src="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/2.1.2/sweetalert.min.js"></script> --}}
+    <script src="{{asset('js/off-canvas.js')}}"></script>
+    <script src="{{asset('js/misc.js')}}"></script>
+    <script src="{{asset('js/dashboard.js')}}"></script>
+    <script src="{{asset('js/jquery-ui.js')}}"></script>
+    <script src="{{asset('js/jquery.dataTables.min.js')}}"></script>
+    <script src="{{asset('js/dataTables.bootstrap4.min.js')}}"></script>
+    {{-- <script src="{{asset('js/sweetalert2.all.js')}}"></script> --}}
+    <script src="{{asset('js/select2.min.js')}}"></script>
+    @include('sweetalert::alert')
     <!-- End custom js for this page-->
     @yield('js')
+    @show
 </body>
 
 </html>

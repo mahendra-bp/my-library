@@ -4,6 +4,9 @@ namespace App\Http\Controllers;
 
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Gate;
+use RealRashid\SweetAlert\Facades\Alert;
+
+
 
 
 
@@ -29,9 +32,9 @@ class UserController extends Controller
     public function index()
     {
         if (Auth::user()->level == 'user') {
-            return view('errors.403');
+            Alert::info('Oopss..', 'Anda dilarang masuk ke area ini.');
+            return redirect()->to('/');
         }
-
         $users = \App\User::paginate(10);
         return view('users.index', ['users' => $users]);
     }
@@ -44,7 +47,8 @@ class UserController extends Controller
     public function create()
     {
         if (Auth::user()->level == 'user') {
-            return view('errors.403');
+            Alert::info('Oopss..', 'Anda dilarang masuk ke area ini.');
+            return redirect()->to('/');
         }
         return view('users.create');
     }
@@ -91,7 +95,8 @@ class UserController extends Controller
     public function show($id)
     {
         if (Auth::user()->level == 'user') {
-            return view('errors.403');
+            Alert::info('Oopss..', 'Anda dilarang masuk ke area ini.');
+            return redirect()->to('/');
         }
 
         $user = \App\User::findOrFail($id);
@@ -107,7 +112,8 @@ class UserController extends Controller
     public function edit($id)
     {
         if (Auth::user()->level == 'user') {
-            return view('errors.403');
+            Alert::info('Oopss..', 'Anda dilarang masuk ke area ini.');
+            return redirect()->to('/');
         }
 
         $user = \App\User::findOrFail($id);
