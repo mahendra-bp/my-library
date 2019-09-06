@@ -34,10 +34,10 @@ class BookController extends Controller
      */
     public function index()
     {
-        if (Auth::user()->level == 'user') {
-            Alert::info('Oopss..', 'Anda dilarang masuk ke area ini.');
-            return redirect()->to('/');
-        }
+        // if (Auth::user()->level == 'user') {
+        //     Alert::info('Oopss..', 'Anda dilarang masuk ke area ini.');
+        //     return redirect()->to('/');
+        // }
 
         $books = Book::paginate(10);
         return view('books.index', ['books' => $books]);
@@ -106,7 +106,7 @@ class BookController extends Controller
      */
     public function show($id)
     {
-        if (Auth::user()->level == 'user') {
+        if (Auth::user()->level == 'user' && Auth::user()->id == $id) {
             Alert::info('Oopss..', 'Anda dilarang masuk ke area ini.');
             return redirect()->to('/');
         }

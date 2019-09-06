@@ -29,6 +29,6 @@ class HomeController extends Controller
         $transaction = Transaction::get();
         $member   = Member::get();
         $book      = Book::get();
-        return view('home');
+        return view('home', compact('transaction', 'member', 'book'));
     }
 }

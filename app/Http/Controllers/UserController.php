@@ -94,7 +94,7 @@ class UserController extends Controller
      */
     public function show($id)
     {
-        if (Auth::user()->level == 'user') {
+        if (Auth::user()->level == 'user' && Auth::user()->id != $id) {
             Alert::info('Oopss..', 'Anda dilarang masuk ke area ini.');
             return redirect()->to('/');
         }
@@ -111,7 +111,7 @@ class UserController extends Controller
      */
     public function edit($id)
     {
-        if (Auth::user()->level == 'user') {
+        if (Auth::user()->level == 'user' && Auth::user()->id != $id) {
             Alert::info('Oopss..', 'Anda dilarang masuk ke area ini.');
             return redirect()->to('/');
         }

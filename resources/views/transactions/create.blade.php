@@ -101,6 +101,7 @@
                                 </div>
                             </div>
 
+                            @if(Auth::user()->level == 'admin')
                             <div class="form-group{{ $errors->has('anggota_id') ? ' has-error' : '' }}">
                                 <label for="buku_id" class="col-md-4 control-label">Anggota</label>
                                 <div class="col-md-6">
@@ -117,6 +118,38 @@
                                     @if ($errors->has('anggota_id'))
                                     <span class="help-block">
                                         <strong>{{ $errors->first('annggota_id') }}</strong>
+                                    </span>
+                                    @endif
+                                </div>
+                            </div>
+                            @else
+                            <div class="form-group{{ $errors->has('anggota_id') ? ' has-error' : '' }}">
+                                <label for="buku_id" class="col-md-4 control-label">Anggota</label>
+                                <div class="col-md-6">
+                                    <div class="input-group">
+                                        <input value="{{Auth::user()->member->nama}}" id="anggota_nama" type="text"
+                                            class="form-control" readonly="" required>
+                                        <input value="{{Auth::user()->member->id}}" id="anggota_id" type="hidden"
+                                            name="anggota_id" value="{{ old('anggota_id') }}" required readonly="">
+
+                                    </div>
+                                    @if ($errors->has('anggota_id'))
+                                    <span class="help-block">
+                                        <strong>{{ $errors->first('annggota_id') }}</strong>
+                                    </span>
+                                    @endif
+                                </div>
+                            </div>
+                            @endif
+
+                            <div class="form-group{{ $errors->has('ket') ? ' has-error' : '' }}">
+                                <label for="ket" class="col-md-4 control-label">Keterangan</label>
+                                <div class="col-md-6">
+                                    <input id="ket" type="text" class="form-control" name="ket"
+                                        value="{{ old('ket') }}">
+                                    @if ($errors->has('ket'))
+                                    <span class="help-block">
+                                        <strong>{{ $errors->first('ket') }}</strong>
                                     </span>
                                     @endif
                                 </div>

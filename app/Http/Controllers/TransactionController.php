@@ -54,14 +54,14 @@ class TransactionController extends Controller
     {
 
 
-        if (Auth::user()->level == 'user') {
-            Alert::info('Oopss..', 'Anda dilarang masuk ke area ini.');
-            return redirect()->to('/');
-        }
+        // if (Auth::user()->level == 'user') {
+        //     Alert::info('Oopss..', 'Anda dilarang masuk ke area ini.');
+        //     return redirect()->to('/');
+        // }
 
         $getRow = Transaction::orderBy('id', 'DESC')->get();
-
         $lastId = $getRow->first();
+        // $kode = 'TR';
         $kode = "TR0000" . ($lastId->id + 1);
         $books = Book::where('jumlah_buku', '>', 0)->get();
         $members = Member::get();
