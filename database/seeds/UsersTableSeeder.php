@@ -13,12 +13,12 @@ class UsersTableSeeder extends Seeder
     {
         \App\User::insert([
             [
-                'id'              => 3,
+                'id'              => 1,
                 'name'              => 'mahe - Admin',
                 'username'        => 'mahe123',
                 'email'             => 'mahe@gmail.com',
                 'password'        => bcrypt('mahe123'),
-                'gambar'            => NULL,
+                'gambar'            => 'gambar/kucing1.jpg',
                 'level'            => 'admin',
                 'remember_token'    => NULL,
                 'created_at'      => \Carbon\Carbon::now(),
@@ -26,16 +26,40 @@ class UsersTableSeeder extends Seeder
             ],
             [
                 'id'              => 2,
-                'name'              => 'Pendek - User',
+                'name'              => 'bima - User',
                 'username'        => 'bima123',
-                'email'             => 'pendek@gmail.com',
-                'password'        => bcrypt('pendek123'),
-                'gambar'            => NULL,
+                'email'             => 'bima@gmail.com',
+                'password'        => bcrypt('bima123'),
+                'gambar'            => 'gambar/kucing2.jpg',
                 'level'            => 'user',
                 'remember_token'    => NULL,
                 'created_at'      => \Carbon\Carbon::now(),
                 'updated_at'      => \Carbon\Carbon::now()
-            ]
+            ],
+            [
+                'id'              => 3,
+                'name'              => 'putra - User',
+                'username'        => 'putra123',
+                'email'             => 'putra@gmail.com',
+                'password'        => bcrypt('putra123'),
+                'gambar'            => 'gambar/kucing3.jpg',
+                'level'            => 'user',
+                'remember_token'    => NULL,
+                'created_at'      => \Carbon\Carbon::now(),
+                'updated_at'      => \Carbon\Carbon::now()
+            ],
+            [
+                'id'              => 4,
+                'name'              => 'saskeh - User',
+                'username'        => 'saskeh123',
+                'email'             => 'saskeh@gmail.com',
+                'password'        => bcrypt('saskeh123'),
+                'gambar'            => 'gambar/saskeh.jpg',
+                'level'            => 'user',
+                'remember_token'    => NULL,
+                'created_at'      => \Carbon\Carbon::now(),
+                'updated_at'      => \Carbon\Carbon::now()
+            ],
         ]);
     }
 }
