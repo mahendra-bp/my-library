@@ -38,10 +38,10 @@
         <!-- partial:partials/_navbar.html -->
         <nav class="navbar default-layout col-lg-12 col-12 p-0 fixed-top d-flex flex-row">
             <div class="text-center navbar-brand-wrapper d-flex align-items-top justify-content-center">
-                <a class="navbar-brand brand-logo" href="index.html">
-                    <img src="{{asset('/assets/images/logo.svg')}}" alt="logo" /> </a>
+                {{-- <a class="navbar-brand brand-logo" href="index.html">
+                    <img src="" alt="" /> </a>
                 <a class="navbar-brand brand-logo-mini" href="index.html">
-                    <img src="{{asset('/assets/images/logo-mini.svg')}}" alt="logo" /> </a>
+                    <img src="{{asset('/assets/images/logo-mini.svg')}}" alt="logo" /> </a> --}}
             </div>
             <div class="navbar-menu-wrapper d-flex align-items-center">
 
@@ -51,7 +51,7 @@
                     </div>
                 </form>
                 <ul class="navbar-nav ml-auto">
-                    <li class="nav-item dropdown">
+                    {{-- <li class="nav-item dropdown">
                         <a class="nav-link count-indicator" id="messageDropdown" href="#" data-toggle="dropdown"
                             aria-expanded="false">
                             <i class="mdi mdi-bell-outline"></i>
@@ -92,8 +92,8 @@
                                 </div>
                             </a>
                         </div>
-                    </li>
-                    <li class="nav-item dropdown">
+                    </li> --}}
+                    {{-- <li class="nav-item dropdown">
                         <a class="nav-link count-indicator" id="notificationDropdown" href="#" data-toggle="dropdown">
                             <i class="mdi mdi-email-outline"></i>
                             <span class="count bg-success">3</span>
@@ -132,7 +132,7 @@
                                     <p class="font-weight-light small-text mb-0"> 2 days ago </p>
                                 </div>
                             </a>
-                        </div>
+                        </div> --}}
                     </li>
                     <li class="nav-item dropdown d-none d-xl-inline-block user-dropdown">
                         @if(\Auth::user())

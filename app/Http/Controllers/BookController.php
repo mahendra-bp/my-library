@@ -12,10 +12,6 @@ use RealRashid\SweetAlert\Facades\Alert;
 
 
 
-
-
-
-
 class BookController extends Controller
 {
 
