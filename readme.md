@@ -1,10 +1,6 @@
 
 <p align="center">
-<a href="https://travis-ci.org/laravel/framework"><img src="https://travis-ci.org/laravel/framework.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://poser.pugx.org/laravel/framework/d/total.svg" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://poser.pugx.org/laravel/framework/v/stable.svg" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://poser.pugx.org/laravel/framework/license.svg" alt="License"></a>
-<a href="http://linkedin.com/in/mahendrabp/"><img src="https://img.shields.io/badge/-LinkedIn-black.svg?style=flat-square&logo=linkedin&colorB=555" alt="License"></a>
+<a href="http://linkedin.com/in/mahendrabp/"><img src="https://img.shields.io/badge/-LinkedIn-black.svg?style=flat-square&logo=linkedin&colorB=555" alt="Linkedin"></a>
 </p>
 
 
@@ -21,9 +17,9 @@
   <h3 align="center">MyLibrary</h3>
 
   <p align="center">
-    
+    .
     <br />
-    <a href="https://github.com/othneildrew/Best-README-Template"><strong>Explore the docs »</strong></a>
+    <a href="https://github.com/mahendrabp/my-library/"><strong>Explore the docs »</strong></a>
     <br />
     <br />
     <a href="">View Demo</a>
@@ -33,7 +29,6 @@
     <a href="https://github.com/mahendrabp/my-library/issues">Request Feature</a>
   </p>
 </p>
-
 
 
 <!-- TABLE OF CONTENTS -->
